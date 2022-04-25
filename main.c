@@ -1,6 +1,16 @@
-#include "./includes/philo.h"
-#include <pthread.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlecherb <mlecherb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/25 10:29:56 by mlecherb          #+#    #+#             */
+/*   Updated: 2022/04/25 10:29:56 by mlecherb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "includes/philo.h"
 
 void    free_struct(pthread_t *tab, pthread_mutex_t *mutex, t_data *d)
 {
@@ -9,8 +19,8 @@ void    free_struct(pthread_t *tab, pthread_mutex_t *mutex, t_data *d)
     i = 0;
     free(tab);
     free(mutex);
-    while (i++ < d->rules->nb_philo - 1)
-        free(d->philo[i]);
+    // while (i++ < d->rules->nb_philo - 1)
+    //     free(d.philo[i]);
     free(d->rules);
     free(d);
 }

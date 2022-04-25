@@ -34,6 +34,6 @@ typedef struct s_data
 void    start_philo(t_rules *rules);
 void    *routine(void);
 void    free_struct(pthread_t *tab, pthread_mutex_t *mutex, t_data *d);
-
+void    *checker_death(void *);
 
 #endif
