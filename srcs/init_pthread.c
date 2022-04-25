@@ -34,6 +34,7 @@ void    start_philo(t_rules *rules)
             philo[i].left_fork = mutex[i - 1];
         philo[i].right_fork = mutex[i];
         philo[i].index_philo = i;
+        philo[i].isdead = 0;
         i++;
     }
     data->philo = philo;
@@ -41,7 +42,7 @@ void    start_philo(t_rules *rules)
     while (i++ < rules->nb_philo)
         pthread_create(&tab[i], NULL, &routine, NULL);
     pthread_mutex_lock(&data->dead);
-    pthread_create(checker, NULL, &CHECK_DEATH< NULL);
+    pthread_create(checker, NULL, &checker_death(d), NULL);
     pthread_mutex_lock(&data->dead);
     pthread_mutex_unlock(&data->dead);
     free_struct(tab, mutex, d);
