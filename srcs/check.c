@@ -12,26 +12,29 @@
 
 #include "../includes/philo.h"
 
-void    *checker_death(void *data)
+void	*philo_dead(void *phil)
 {
-	t_data	*d;
-	int	i;
+	t_philo				*philo;
 
-	d = (t_data *)data;
-	i = 0;
-    while (1)
-    {
-        while (i < d->rules->nb_philo - 1)
-        {
-            if (d->philo[i].isdead == 1)
-            {
-                pthread_mutex_unlock(&d->dead);
-                return ((void*)0);
-            }
-            else
-                i++;
-        }
-        i = 0;
-    }
-    return ((void*)0);
+	philo = (t_philo *)phil;
+	while (1)
+	{
+		if ((philo->eating == 0 && get_current_time() - 
+			philo->die_time >= philo->rules->time_to_die) || philo->isdead == 1)
+		{
+			if (philo->isdead == 1)
+			{
+				pthread_mutex_unlock(&philo->data->isdead);
+				write_message_lock(6, (get_current_time() \
+					- philo->data->time_today), philo->id, philo);
+				break ;
+			}
+			write_message_lock(5, (get_current_time() - philo->data->time_today),
+				philo->id, philo);
+			pthread_mutex_unlock(&philo->data->isdead);
+			return (NULL);
+		}
+		usleep(2000);
+	}
+	return (NULL);
 }

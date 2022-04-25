@@ -1,9 +1,12 @@
 NAME =		philo
 
-CFLAGS =	#-Wall -Wextra -Werror
+CFLAGS =	-Wall -Wextra -Werror -g -fsanitize=address 
 
 SRCS =		main.c \
-			srcs/init_pthread.c\
+			srcs/init_pthread.c \
+			srcs/check.c \
+			srcs/philo.c \
+			srcs/utils.c\
 
 OBJS =		$(SRCS:.c=.o)
 
@@ -15,7 +18,7 @@ $(NAME):	$(OBJS)
 clean:
 			rm -f $(OBJS)
 
-fclean:		cleans
+fclean:		clean
 			rm -f $(NAME)
 
 re: 		fclean all

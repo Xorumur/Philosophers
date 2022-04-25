@@ -20,7 +20,7 @@ void    free_struct(pthread_t *tab, pthread_mutex_t *mutex, t_data *d)
     free(tab);
     free(mutex);
     // while (i++ < d->rules->nb_philo - 1)
-    //     free(d.philo[i]);
+    //     free(&d.philo[i]);
     free(d->rules);
     free(d);
 }
@@ -61,7 +61,7 @@ t_rules *init_rules(char **argv)
     if (argv[4])
         tmp->must_eat = ft_atoi(argv[4]);
     else
-        tmp->must_eat = 0;
+        tmp->must_eat = -1;
     return (tmp);
 }
 
