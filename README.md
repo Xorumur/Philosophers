@@ -1,14 +1,22 @@
 # Philosophers
 
 In the root of repository run make and launch as follows:
+
 ./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number of meals]
 
+
 number_of_philosophers - number of philosophers and forks
+
 time_to_die (ms) - philosopher dies if he doesn't start eating time_to_die after start of his last meal or the beginning of simulation
+
 time_to_eat (ms) and time_to_sleep (ms) - how much time does it take for a philosopher to eat and sleep, respectively
+
 number of meals - optional parameter, simulation stops if all philosophers eat at least such amount of times
+
 If number of meals isn't specified simulation stops at the death of any philosopher.
+
 Runing with number of philosophers > 200 and time_to_die or time_to_eat or time_to_sleep less than 60 ms may cause underfined behaviour.
+
 
 Example test cases:
 
@@ -27,6 +35,10 @@ Example test cases:
 Makefile
 
 make -- compiles philo executable.
+
 clean -- deletes object files.
+
 fclean -- deletes object files and philo.
+
 re -- runs fclean and recompiles.
+
