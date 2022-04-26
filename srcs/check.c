@@ -19,7 +19,7 @@ void	*philo_dead(void *phil)
 	philo = (t_philo *)phil;
 	while (1)
 	{
-		if ((philo->eating == 0 && get_current_time() - 
+		if ((philo->eating == 0 && get_current_time() - \
 			philo->die_time >= philo->rules->time_to_die) || philo->isdead == 1)
 		{
 			if (philo->isdead == 1)
@@ -29,8 +29,8 @@ void	*philo_dead(void *phil)
 					- philo->data->time_today), philo->id, philo);
 				break ;
 			}
-			write_message_lock(5, (get_current_time() - philo->data->time_today),
-				philo->id, philo);
+			write_message_lock(5, (get_current_time() - \
+						philo->data->time_today), philo->id, philo);
 			pthread_mutex_unlock(&philo->data->isdead);
 			return (NULL);
 		}

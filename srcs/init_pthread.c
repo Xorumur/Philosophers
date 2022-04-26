@@ -12,23 +12,10 @@
 
 #include "../includes/philo.h"
 
-t_philo	*init_philo(t_data *data, t_rules *rules, pthread_mutex_t *mutex)
+t_philo	*help_init_philo(t_philo *philo, pthread_mutex_t *mutex, t_rules *rules)
 {
-	int			i;
-	t_philo		*philo;
-	
-	philo = malloc(sizeof(t_philo) * rules->nb_philo);
-	i = 0;
-	while (i < rules->nb_philo)
-	{
-		philo[i].id = i + 1;
-		pthread_mutex_init(&mutex[i], NULL);
-		philo[i].index_philo = i;
-		philo[i].isdead = 0;
-		philo[i].rules = rules;
-		philo[i].data = data;
-		i++;
-	}
+	int	i;
+
 	i = 0;
 	while (i < rules->nb_philo)
 	{
@@ -42,10 +29,33 @@ t_philo	*init_philo(t_data *data, t_rules *rules, pthread_mutex_t *mutex)
 	return (philo);
 }
 
-void	launch_philo(t_rules *rules, t_data * d, pthread_t *tab, pthread_t *isdead)
+t_philo	*init_philo(t_data *data, t_rules *rules, pthread_mutex_t *mutex)
+{
+	int			i;
+	t_philo		*philo;
+
+	philo = malloc(sizeof(t_philo) * rules->nb_philo);
+	i = 0;
+	while (i < rules->nb_philo)
+	{
+		philo[i].id = i + 1;
+		pthread_mutex_init(&mutex[i], NULL);
+		philo[i].index_philo = i;
+		philo[i].isdead = 0;
+		philo[i].eating = 0;
+		philo[i].rules = rules;
+		philo[i].data = data;
+		i++;
+	}
+	philo = help_init_philo(philo, mutex, rules);
+	return (philo);
+}
+
+void	launch_philo(t_rules *rules, t_data *d,
+						pthread_t *tab, pthread_t *isdead)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < rules->nb_philo)
 	{
@@ -93,5 +103,6 @@ void	start_philo(t_rules *rules)
 	launch_philo(rules, data, tab, isdead);
 	pthread_mutex_lock(&data->isdead);
 	pthread_mutex_unlock(&data->isdead);
+	free(isdead);
 	free_struct(tab, mutex, data);
 }

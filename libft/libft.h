@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlecherb <mlecherb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/26 10:47:32 by mlecherb          #+#    #+#             */
+/*   Updated: 2022/04/26 10:47:32 by mlecherb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -23,7 +35,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strcat(char *dest, char *src);
 char	**ft_split(char const *s, char c);
 void	ft_putstr(char *s);
-void    ft_putstr_fd(char *s, int fd);
+void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr(int nb);
 void	ft_putnbr_fd(int nb, int fd);
 void	ft_putendl_fd(char *s, int fd);

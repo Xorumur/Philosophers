@@ -6,13 +6,14 @@
 /*   By: mlecherb <mlecherb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:03:09 by mlecherb          #+#    #+#             */
-/*   Updated: 2022/04/25 20:17:43 by mlecherb         ###   ########.fr       */
+/*   Updated: 2022/04/26 10:27:04 by mlecherb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	write_message_lock(int msg, unsigned long long time, int id, t_philo *philo)
+void	write_message_lock(int msg, unsigned long long time,
+								int id, t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->aff);
 	if (msg == 1)

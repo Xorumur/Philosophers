@@ -1,6 +1,6 @@
 NAME =		philo
 
-CFLAGS =	-Wall -Wextra -Werror -g -fsanitize=address 
+CFLAGS =	-Wall -Wextra -Werror #-g -fsanitize=address 
 
 SRCS =		main.c \
 			srcs/init_pthread.c \
@@ -14,6 +14,8 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			gcc -g -pthread $(CFLAGS) $(OBJS) ./libft/libft.a -o $(NAME)
+norme:
+		norminette $(SRCS)
 
 clean:
 			rm -f $(OBJS)
