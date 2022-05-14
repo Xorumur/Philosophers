@@ -84,12 +84,10 @@ void	launch_philo(t_rules *rules, t_data *d,
 void	start_philo(t_rules *rules)
 {
 	pthread_t		*tab;
-	int				i;
 	pthread_mutex_t	*mutex;
 	t_data			*data;
 	pthread_t		*isdead;
 
-	i = 0;
 	tab = malloc(sizeof(pthread_t) * rules->nb_philo);
 	isdead = malloc(sizeof(pthread_mutex_t) * rules->nb_philo);
 	mutex = malloc(sizeof(pthread_mutex_t) * rules->nb_philo);

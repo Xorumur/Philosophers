@@ -14,9 +14,6 @@
 
 void	free_struct(pthread_t *tab, pthread_mutex_t *mutex, t_data *d)
 {
-	int	i;
-
-	i = 0;
 	free(tab);
 	free(mutex);
 	free(d->rules);

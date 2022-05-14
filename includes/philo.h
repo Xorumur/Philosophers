@@ -38,7 +38,8 @@ typedef struct s_data
 	t_rules			*rules;
 	pthread_mutex_t	isdead;
 	pthread_mutex_t	aff;
-	int				time_today;
+	unsigned long long 	time_today;
+	int				time_start;
 }	t_data;
 
 typedef struct s_philo
